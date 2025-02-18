@@ -1,0 +1,723 @@
+const fs = require("fs");
+const studioId = "hb5kfs70";
+const studioDataset = "production";
+const order = " | order(_createdAt asc)";
+const query = encodeURIComponent(
+  `*[_type == "brand" || _type == "gallery"]${order}`
+);
+function makeImgUrl(ref, maxquality) {
+  const parts = ref.split("-");
+  const id = parts[1];
+  const dimentions = parts[2];
+  const format = parts[3];
+  const optimizedSize = maxquality ? "" : "&w=600";
+  return `https://cdn.sanity.io/images/${studioId}/${studioDataset}/${id}-${dimentions}.${format}?fm=webp${optimizedSize}`;
+}
+const generateHtml = (data) => {
+  const brand = data.filter((element) => element._type === "brand")[0];
+  const gallery = data.filter((element) => element._type === "gallery");
+
+  const whatsapp = brand.whatsapp;
+
+  const galleryRendered = gallery.map((item) =>
+    makeImgUrl(item.image.asset._ref)
+  );
+
+  const htmlContent = `
+  <!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Laurel Traslados -  Excursiones. Translados y turismo Iguazú</title>
+	<meta name="description" content="Brindamos un servicio de taxi integral en la pintoresca región de Foz do Iguaçu, atendiendo no solo las necesidades de transporte convencionales"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="robots" content="index">
+	<meta name="generator" content="WebAcappellaFx (1.4.52) Windows" />
+	<link rel="stylesheet" href="wafx_res/standard/css/normalize0da6.css?static_res_1c288804cdde21393d8eec577f56f5b9"/>
+	<link rel="stylesheet" href="wafx_res/standard/css/wafx-menu0da6.css?static_res_1c288804cdde21393d8eec577f56f5b9">
+	<link rel="stylesheet" href="wafx_res/libs/blueimp/css/blueimp-gallery.min31dc.css?static_res_5538b4607b305e8973287b2021bc665b">
+	<link rel="stylesheet" href="wafx_res/standard/multimedia/wafx-multimedia0da6.css?static_res_1c288804cdde21393d8eec577f56f5b9">
+	<link rel="stylesheet" href="wafx_res/libs/animate/animate.min31dc.css?static_res_5538b4607b305e8973287b2021bc665b">
+  <script src="wafx_res/standard/js/wafx-vanilla0da6.js?static_res_1c288804cdde21393d8eec577f56f5b9"></script>
+  <link rel="stylesheet" href="wafx_res/standard/css/wafx-common0da6.css?static_res_1c288804cdde21393d8eec577f56f5b9">
+	<script>
+                var WaComponentContext = {};
+                var WaPageContext = {};
+                var WaContext = {};
+		WaContext.app_version="1.4.52";
+		WaContext.app_revision="521abe3#af926f02";
+		WaContext.preview=false;
+		WaPageContext.lang="fr";
+
+		document.wafxCarouselDatas = [];
+document.wafxGalleryDatas = [];
+document.wafxScreenInfos = 
+{
+    "screens": [
+        {
+            "factor": 1,
+            "key": "320",
+            "width_real": 320,
+            "width_virtual": 320
+        },
+        {
+            "factor": 1,
+            "key": "768",
+            "width_real": 768,
+            "width_virtual": 768
+        },
+        {
+            "factor": 1,
+            "key": "1024",
+            "width_real": 1024,
+            "width_virtual": 1024
+        }
+    ]
+}
+
+	</script>
+
+	<link id="waCssLink0" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&amp;display=swap" />
+
+
+	<link rel="stylesheet" href="indexd430.css?e348c3a1_baaa_4fbe_888d_e72d98b85e8c_7"/>
+
+	<style>
+
+		
+		.blockPagecontainer{
+			position:relative;
+			margin: 0 auto;
+
+		}
+
+		.blockPage{
+			position:relative;
+	
+		}
+
+		.blockPage2{
+			position:relative;
+	
+		}
+	</style>
+
+
+    
+</head>
+<body style='-webkit-font-smoothing: antialiased;' >
+
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <p class="title">&nbsp;</p>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <!--
+    <ol class="indicator"></ol>
+-->
+</div>
+	
+			<div class='blockPagecontainer'>
+
+				<div class='blockPage'>
+
+						<div class="compVis_0"><div  style='overflow:hidden;' class='comp_0'><div class='wafx-smt-txt-wrap smt-para-wa-1'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default ">Ofrecemos servicios de traslado personalizados,<br /> puntuales y de lujo para garantizar que su <br />viaje sea tan especial como el destino.</p>
+</div>
+</div></div>
+<div class="compVis_1"><div  style='overflow:hidden;' class='comp_1'><div class='wafx-smt-txt-wrap smt-para-wa-2'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default ">Con nuestro servicio personalizado,<br /> brindamos traslados ágiles y confiables, asegurando que tengas una experiencia inolvidable.</p>
+</div>
+</div></div>
+<div class="compVis_2"><div  style='overflow:hidden;display:flex;flex-direction:row;' class='comp_2'><div class='wafx-smt-txt-wrap smt-para-wa-3'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-3-block-0"><b><font color='#eeffff'>Eficiencia en nuestro servicio.</font></b></p>
+</div>
+</div></div>
+<div class="compVis_3"><div  style='overflow:hidden;' class='comp_3'><div class='wafx-smt-txt-wrap smt-para-wa-4'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-4-block-0"><b><font color='#000000'>Servicio de taxi en la región de las Tres Fronteras, atendiendo también recorridos turísticos en la ciudad de Foz, Puerto Iguazú (Argentina), Minas de Wanda ,Cataratas Argentina e brasilera,Duty free shop, Ciudad del Este (Paraguay).<br /><br />Reservas: Excursiones. </font></b><b>Ofrecemos traslados desde el aeropuerto para grupos de 4, 5 o 6 pasajeros, incluyendo el transporte de equipaje de manera cómoda y segura. Ya sea que viajes en familia o con amigos, garantizamos un servicio eficiente y personalizado para que tu llegada sea tranquila y sin preocupaciones. Nuestro equipo se encargará de recibirte a tiempo y llevarte a tu destino con total comodidad, adaptándonos a tus necesidades y al tamaño de tu grupo. ¡Haz tu reserva con anticipación y asegura un traslado confiable y cómodo!</b></p>
+</div>
+</div></div>
+<div class="compVis_4"><div class='comp_4'  title=""><img  srcset="./wafx_res/Images/0-253-{743d2898-0514-46d1-8df0-406e15450796} 253w,./wafx_res/Images/0-18-{743d2898-0514-46d1-8df0-406e15450796} 18w,./wafx_res/Images/0-147-{743d2898-0514-46d1-8df0-406e15450796} 147w" sizes="(min-width:1025px) 147px,(min-width:768px) 18px,(max-width:768px) 253px"  class="wafx-img-picture" src="wafx_res/Images/0-18-%7b743d2898-0514-46d1-8df0-406e15450796%7d.html" alt=""></div></div>
+<div class="compVis_5"><div  class='comp_5 wafxCompFluid'  ></div></div>
+<div class="compVis_6"><div  class='comp_6 wafxCompFluid'  ></div></div>
+<div class="compVis_7"><div  style='overflow:hidden;' class='comp_7'><div class='wafx-smt-txt-wrap smt-para-wa-8'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-8-block-0">Nuestro vehículo está diseñada para satisfacer sus necesidades específicas. Dispongo de un coches espaciosos que pueden caber cómodamente hasta 6 pasajeros sin equipaje o 4 pasajeros con equipaje. Priorizamos la comodidad y la seguridad de nuestros clientes, brindando un servicio de transporte que se adapta a sus necesidades individuales.<br /><br />Confíe en nosotros para un servicio de taxi confiable y amigable que lo lleve a descubrir los encantos de Foz do Iguaçu y sus alrededores. Estamos aquí para hacer que su experiencia de viaje sea cómoda, conveniente y memorable</p>
+</div>
+</div></div>
+<div class="compVis_8"><div class='comp_8 wafxWow  fadeIn wafxRipple wafxPictureOver'  title=""><a href="https://api.whatsapp.com/send?phone=54${whatsapp}&amp;text=Hola,%20me%20comunico%20contigo%20a%20trav%c3%a9s%20de%20tu%20pagina%20web.%20Me%20gustar%c3%ada%20tener%20m%c3%a1s%20informaci%c3%b3n%20sobre%20tus%20servicios." target="_blank"  >
+    <img  srcset="./wafx_res/Images/0-42-{f939ade1-4519-45ef-9ff0-cadcd6f18aa3}.png 41w,./wafx_res/Images/0-42-{f939ade1-4519-45ef-9ff0-cadcd6f18aa3}.png 35w,./wafx_res/Images/0-42-{f939ade1-4519-45ef-9ff0-cadcd6f18aa3}.png 42w" sizes="(min-width:1025px) 42px,(min-width:768px) 35px,(max-width:768px) 41px"  class="wafx-img-picture" src="wafx_res/Images/0-35-%7bf939ade1-4519-45ef-9ff0-cadcd6f18aa3%7d.html" alt="">
+    <img  srcset="./wafx_res/Images/0-42-{208887f7-3dff-4fb9-94dc-2ded3dbdba29}.png 41w,./wafx_res/Images/0-42-{208887f7-3dff-4fb9-94dc-2ded3dbdba29}.png 35w,./wafx_res/Images/0-42-{208887f7-3dff-4fb9-94dc-2ded3dbdba29}.png 42w" sizes="(min-width:1025px) 42px,(min-width:768px) 35px,(max-width:768px) 41px"  class="wafx-img-picture-over" src="wafx_res/Images/0-35-%7b208887f7-3dff-4fb9-94dc-2ded3dbdba29%7d.html" alt=""></a></div></div>
+<div class="compVis_9">
+    <div  class='comp_9 wafxCompFluid'  >
+        <div class="wafx-vis-320 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:520px;height:139px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="4507" data-original-height="2691" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-5145.jpg);'></div>
+</div>
+<div class="wafx-vis-768 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:968px;height:333px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="4507" data-original-height="2691" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-5145.jpg);'></div>
+</div>
+<div class="wafx-vis-1024 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:1224px;height:444px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="4507" data-original-height="2691" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-5145.jpg);'></div>
+</div>
+</div></div>
+<div class="compVis_10"><div class='comp_10 wafxPictureOver'  title="">
+    <img  srcset="./wafx_res/Images/0-133-LOGO-arpovação.png 133w,./wafx_res/Images/0-241-LOGO-arpovação.png 181w,./wafx_res/Images/0-270-LOGO-arpovação.png 241w" sizes="(min-width:1025px) 241px,(min-width:768px) 181px,(max-width:768px) 133px"  class="wafx-img-picture" src="wafx_res/Images/0-133-LOGO-arpova%c3%a7%c3%a3o.png" alt="">
+    <img  srcset="./wafx_res/Images/0-235-{31721e83-ae6c-4490-8c62-404f849ea321}.png 133w,./wafx_res/Images/0-235-{31721e83-ae6c-4490-8c62-404f849ea321}.png 180w,./wafx_res/Images/0-235-{31721e83-ae6c-4490-8c62-404f849ea321}.png 235w" sizes="(min-width:1025px) 235px,(min-width:768px) 180px,(max-width:768px) 133px"  class="wafx-img-picture-over" src="wafx_res/Images/0-133-%7b31721e83-ae6c-4490-8c62-404f849ea321%7d.html" alt=""></div></div>
+<div class="compVis_11"><div  class='comp_11 wafxCompFluid'  ><div class="wafx-vis-320 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:520px;height:180px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="2661" data-original-height="1996" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-1279-7.jpg);'></div>
+</div>
+<div class="wafx-vis-768 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:968px;height:292px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="2661" data-original-height="1996" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-3071-7.jpg);'></div>
+</div>
+<div class="wafx-vis-1024 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:1224px;height:391px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="2661" data-original-height="1996" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-4095-7.jpg);'></div>
+</div>
+</div></div>
+<div class="compVis_12"><div  class='comp_12'><div class='inner-box'></div><div class="wafx-menunid13 wafx-menu-wrapper" data-menu-unid="wafx-menunid13">
+<div class=" wafx-menu-bt-hamburger" >
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+    <path d="M 3 5 A 1.0001 1.0001 0 1 0 3 7 L 21 7 A 1.0001 1.0001 0 1 0 21 5 L 3 5 z M 3 11 A 1.0001 1.0001 0 1 0 3 13 L 21 13 A 1.0001 1.0001 0 1 0 21 11 L 3 11 z M 3 17 A 1.0001 1.0001 0 1 0 3 19 L 21 19 A 1.0001 1.0001 0 1 0 21 17 L 3 17 z" />
+</svg>
+</div>
+<div class="wafx-menu" role="navigation" aria-label="Main menu"   data-sticky=true  data-sticky-bg="#193d27"  data-sticky-large=true >
+<ul class="wafx-menunid13  style='display:flex;justify-content:right;' wafx-menu-frame-main" role="menubar">
+<li role="presentation" >
+<a class="wafx-menu-item " role="menuitem"  >Home</a>
+</li>
+<li role="presentation" >
+<a class="wafx-menu-item " role="menuitem" href="index-2.html#galeria"  >Galeria</a>
+</li>
+<li role="presentation" >
+<a class="wafx-menu-item " role="menuitem" href="index-2.html#servicos"  >Servicios</a>
+</li>
+<li role="presentation" >
+<a class="wafx-menu-item " role="menuitem" href="index-2.html#contato"  >Contacto</a>
+</li>
+</ul>
+</div>
+</div>
+</div></div>
+<div class="compVis_13"><div  class='comp_13 wafxCompFluid'  ></div></div>
+<div class="compVis_14"><div  style='overflow:hidden;display:flex;flex-direction:row;' class='comp_14'><div class='wafx-smt-txt-wrap smt-para-wa-15'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-15-block-0"><b><font color='#ffffff'>Viaje Seguro</font></b></p>
+</div>
+</div></div>
+<div class="compVis_15"><div class='comp_15'  title="">
+    <img  srcset="./wafx_res/Images/0-1024.png 320w,./wafx_res/Images/0-1024.png 475w,./wafx_res/Images/0-1024.png 1024w" sizes="(min-width:1025px) 1024px,(min-width:768px) 475px,(max-width:768px) 320px"  class="wafx-img-picture" src="wafx_res/Images/0-320-%7bc31f29d3-7dea-4285-a86a-0b81eff39cc9%7d.html" alt=""></div></div>
+<div class="compVis_16"><div class='comp_16 wafxRipple wafxPictureOver'  title=""><a href="https://api.whatsapp.com/send?phone=54${whatsapp}&amp;text=Hola,%20me%20comunico%20contigo%20a%20trav%c3%a9s%20de%20tu%20pagina%20web.%20Me%20gustar%c3%ada%20tener%20m%c3%a1s%20informaci%c3%b3n%20sobre%20tus%20servicios."" target="_blank"  >
+    <img  srcset="./wafx_res/Images/0-215-botao 1.png 254w,./wafx_res/Images/0-215-botao 1.png 233w,./wafx_res/Images/0-215-botao 1.png 282w" sizes="(min-width:1025px) 282px,(min-width:768px) 233px,(max-width:768px) 254px"  class="wafx-img-picture" src="wafx_res/Images/0-215-botao 1.png" alt="">
+    <img  srcset="./wafx_res/Images/0-233-botao 2.png 254w,./wafx_res/Images/0-233-botao 2.png 233w,./wafx_res/Images/0-233-botao 2.png 282w" sizes="(min-width:1025px) 282px,(min-width:768px) 233px,(max-width:768px) 254px"  class="wafx-img-picture-over" src="wafx_res/Images/0-233-botao 2.png" alt=""></a></div></div>
+<div class="compVis_17"><div  style='overflow:hidden;' class='comp_17'><div class='wafx-smt-txt-wrap smt-para-wa-18'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-18-block-0">Brindamos un servicio de taxi integral en la pintoresca región de Foz do Iguaçu, atendiendo no solo las necesidades de transporte convencionales, sino también ofreciendo emocionantes recorridos turísticos en la ciudad de Foz, Puerto Iguazú (Argentina) y Ciudad del Este (Paraguay).<br /><br />Nos especializamos en tomar reservas para una amplia variedad de necesidades, desde traslados regulares hasta emocionantes excursiones. Ofrecemos servicios de transferencia eficientes y confiables para garantizar que llegue a su destino de manera segura y puntual.<br /><br /></p>
+</div>
+</div></div>
+<div class="compVis_18"><div class='comp_18'  title="">
+    <img  srcset="./wafx_res/Images/0-327-{a2a84879-dffb-4013-937d-2671e90cfed8}.jpg 153w,./wafx_res/Images/0-327-{a2a84879-dffb-4013-937d-2671e90cfed8}.jpg 245w,./wafx_res/Images/0-327-{a2a84879-dffb-4013-937d-2671e90cfed8}.jpg 327w" sizes="(min-width:1025px) 327px,(min-width:768px) 245px,(max-width:768px) 153px"  class="wafx-img-picture" src="wafx_res/Images/0-153-%7ba2a84879-dffb-4013-937d-2671e90cfed8%7d.html" alt=""></div></div>
+<div class="compVis_19"><div  style='overflow:hidden;' class='comp_19'><div class='wafx-smt-txt-wrap smt-para-wa-20'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-20-block-0"><b><font color='#29612b'>Conozca tres paises en un solo dia</font></b></p>
+</div>
+</div></div>
+<div class="compVis_20"><div class='comp_20'  title=""><img  srcset="./wafx_res/Images/0-1024.png 320w,./wafx_res/Images/0-1024.png 768w,./wafx_res/Images/0-1024.png 1024w" sizes="(min-width:1025px) 1024px,(min-width:768px) 768px,(max-width:768px) 320px"  class="wafx-img-picture" src="wafx_res/Images/0-320-%7bc31f29d3-7dea-4285-a86a-0b81eff39cc9%7d.html" alt=""></div></div>
+<div class="compVis_21"><div  style='overflow:hidden;' class='comp_21'><div class='wafx-smt-txt-wrap smt-para-wa-22'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default ">Brindamos servicios de traslado que van más allá del simple transporte, haciendo de cada viaje una experiencia memorable</p>
+</div>
+</div></div>
+<div class="compVis_22"><div  class='comp_22 wafxCompFluid'  ></div></div>
+<div class="compVis_23"><div  style='overflow:hidden;display:flex;flex-direction:row;' class='comp_23'><div class='wafx-smt-txt-wrap smt-para-wa-24'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default "><b><font color='#ffffff'>Guiamos tu viaje con Comodidad y Seguridad.</font></b></p>
+</div>
+</div></div>
+<div class="compVis_24"><div class='comp_24'  title=""><img  srcset="./wafx_res/Images/0-1024.png 320w,./wafx_res/Images/0-1024.png 768w,./wafx_res/Images/0-1024.png 1005w" sizes="(min-width:1025px) 1005px,(min-width:768px) 768px,(max-width:768px) 320px"  class="wafx-img-picture" src="wafx_res/Images/0-320-%7bc31f29d3-7dea-4285-a86a-0b81eff39cc9%7d.html" alt=""></div></div>
+<div class="compVis_25"><div  style='overflow:hidden;' class='comp_25'><div class='wafx-smt-txt-wrap smt-para-wa-26'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-26-block-0"><b><font color='#fef431'>Galeria</font></b></p>
+</div>
+</div></div>
+<div class="compVis_26"><div  class='comp_26'>
+<div class="wafx-carousel blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls" id="wafx-carouselunid27" >
+<div class="slides"></div>
+<h3 class="title  wafx-slideshow-text-wrap">&nbsp;</h3>
+<a class="prev">‹</a>
+<a class="next">›</a>
+<a class="play-pause"></a>
+</div>
+<script>
+document.wafxCarouselDatas['wafx-carouselunid27'] = 
+{
+    "items": [
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[0]}",
+                "320": "${galleryRendered[0]}",
+                "768": "${galleryRendered[0]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[1]}",
+                "320": "${galleryRendered[1]}",
+                "768": "${galleryRendered[1]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[2]}",
+                "320": "${galleryRendered[2]}",
+                "768": "${galleryRendered[2]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[3]}",
+                "320": "${galleryRendered[3]}",
+                "768": "${galleryRendered[3]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[4]}",
+                "320": "${galleryRendered[4]}",
+                "768": "${galleryRendered[4]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[5]}",
+                "320": "${galleryRendered[5]}",
+                "768": "${galleryRendered[5]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[6]}",
+                "320": "${galleryRendered[6]}",
+                "768": "${galleryRendered[6]}"
+            }
+        }
+    ],
+    "slideshowInterval": 4000,
+    "startSlideshow": true,
+    "stretchImages": "contain",
+    "template_settings": {
+        "col_bg": "rgba(0,0,0,0.701961)",
+        "position": 2,
+        "slideshow_version": 2,
+        "unid_comp": 27
+    }
+}
+</script>
+</div></div>
+<div class="compVis_27"><div  class='comp_27 wafx-lightbox wafx-gallery '  data-gallery-id= "wafx-galleryunid28" >
+<script>
+document.wafxGalleryDatas['wafx-galleryunid28'] = 
+{
+    "items": [
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        },
+        {
+            "html_v2_list": [
+            ]
+        }
+    ],
+    "slideshowInterval": 3000,
+    "startSlideshow": false,
+    "stretchImages": "contain",
+    "template_settings": {
+        "col_bg": "rgba(0,0,0,0.701961)",
+        "position": 2,
+        "slideshow_version": 2,
+        "unid_comp": 28
+    }
+}
+</script>
+<a  href="${galleryRendered[0]}" style="background-image: url('${
+    galleryRendered[0]
+  }')" class='thumb0 ' title=""></a><a  href="${
+    galleryRendered[1]
+  }" style="background-image: url('${
+    galleryRendered[1]
+  }')" class='thumb1 ' title=""></a><a  href="${
+    galleryRendered[2]
+  }" style="background-image: url('${
+    galleryRendered[2]
+  }')" class='thumb2 ' title=""></a><a  href="${
+    galleryRendered[3]
+  }" style="background-image: url('${
+    galleryRendered[3]
+  }')" class='thumb3 ' title=""></a><a  href="${
+    galleryRendered[4]
+  }" style="background-image: url('${
+    galleryRendered[4]
+  }')" class='thumb4 ' title=""></a><a  href="${
+    galleryRendered[6]
+  }" style="background-image: url('${
+    galleryRendered[6]
+  }')" class='thumb5 ' title=""></a><a  href="${
+    galleryRendered[5]
+  }" style="background-image: url('${
+    galleryRendered[5]
+  }')" class='thumb6 ' title=""></a><a  href="${
+    galleryRendered[12]
+  }" style="background-image: url('${
+    galleryRendered[12]
+  }')" class='thumb7 ' title=""></a><a  href="${
+    galleryRendered[13]
+  }" style="background-image: url('${
+    galleryRendered[13]
+  }')" class='thumb8 ' title=""></a><a  href="${
+    galleryRendered[14]
+  }" style="background-image: url('${
+    galleryRendered[14]
+  }')" class='thumb9 ' title=""></a><a  href="${
+    galleryRendered[15]
+  }" style="background-image: url('${
+    galleryRendered[15]
+  }')" class='thumb10 ' title=""></a><a  href="${
+    galleryRendered[16]
+  }" style="background-image: url('${
+    galleryRendered[16]
+  }')" class='thumb11 ' title=""></a><a  href="${
+    galleryRendered[17]
+  }" class='thumb12 ' title=""></a><a  href="${
+    galleryRendered[8]
+  }" class='thumb13 ' title=""></a></div></div>
+<div class="compVis_28"><div  class='comp_28 wafxCompFluid'  ></div></div>
+<a id="servicos" class='comp_29'></a>
+<a id="galeria" class='comp_30'></a>
+<div class="compVis_31"><div  style='overflow:hidden;' class='comp_31'><div class='wafx-smt-txt-wrap smt-para-wa-32'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-32-block-0">+54 ${[
+    ...whatsapp,
+  ]
+    .map((char, i) => ([1, 5, 7].includes(i) ? " " + char : char))
+    .join("")}</p>
+</div>
+</div></div>
+<div class="compVis_32"><div  style='overflow:hidden;' class='comp_32'><div class='wafx-smt-txt-wrap smt-para-wa-33'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-33-block-0">Contacto</p>
+</div>
+</div></div>
+<div class="compVis_33"><div class='comp_33 wafxPictureOver'  title=""><a href="https://www.google.com/"  >
+    <img  srcset="./wafx_res/Images/0-344-LOGO-arpovação.png 270w,./wafx_res/Images/0-344-LOGO-arpovação.png 292w,./wafx_res/Images/0-344-LOGO-arpovação.png 344w" sizes="(min-width:1025px) 344px,(min-width:768px) 292px,(max-width:768px) 270px"  class="wafx-img-picture" src="wafx_res/Images/0-270-LOGO-arpova%c3%a7%c3%a3o.png" alt="">
+    <img  srcset="./wafx_res/Images/0-323.png 270w,./wafx_res/Images/0-323.png 275w,./wafx_res/Images/0-323.png 323w" sizes="(min-width:1025px) 323px,(min-width:768px) 275px,(max-width:768px) 270px"  class="wafx-img-picture-over" src="wafx_res/Images/0-270-%7bd0d64dc1-50c9-4d4d-b9f0-6dcb33729096%7d.html" alt=""></a></div></div>
+<div class="compVis_34"><div class='comp_34 wafxWow  fadeIn wafxRipple wafxPictureOver'  title=""><a href="https://api.whatsapp.com/send?phone=54${whatsapp}&amp;text=Hola,%20me%20comunico%20contigo%20a%20trav%c3%a9s%20de%20tu%20pagina%20web.%20Me%20gustar%c3%ada%20tener%20m%c3%a1s%20informaci%c3%b3n%20sobre%20tus%20servicios."" target="_blank"  >
+    <img  srcset="./wafx_res/Images/0-42-{f939ade1-4519-45ef-9ff0-cadcd6f18aa3}.png 31w,./wafx_res/Images/0-42-{f939ade1-4519-45ef-9ff0-cadcd6f18aa3}.png 45w,./wafx_res/Images/0-42-{f939ade1-4519-45ef-9ff0-cadcd6f18aa3}.png 52w" sizes="(min-width:1025px) 52px,(min-width:768px) 45px,(max-width:768px) 31px"  class="wafx-img-picture" src="wafx_res/Images/0-31-%7bf939ade1-4519-45ef-9ff0-cadcd6f18aa3%7d.html" alt="">
+    <img  srcset="./wafx_res/Images/0-42-{208887f7-3dff-4fb9-94dc-2ded3dbdba29}.png 31w,./wafx_res/Images/0-42-{208887f7-3dff-4fb9-94dc-2ded3dbdba29}.png 45w,./wafx_res/Images/0-42-{208887f7-3dff-4fb9-94dc-2ded3dbdba29}.png 52w" sizes="(min-width:1025px) 52px,(min-width:768px) 45px,(max-width:768px) 31px"  class="wafx-img-picture-over" src="wafx_res/Images/0-31-%7b208887f7-3dff-4fb9-94dc-2ded3dbdba29%7d.html" alt=""></a></div></div>
+<div class="compVis_35"><div class='comp_35 wafxRipple wafxPictureOver'  title=""><a href="https://api.whatsapp.com/send?phone=54${whatsapp}&amp;text=Hola,%20me%20comunico%20contigo%20a%20trav%c3%a9s%20de%20tu%20pagina%20web.%20Me%20gustar%c3%ada%20tener%20m%c3%a1s%20informaci%c3%b3n%20sobre%20tus%20servicios."" target="_blank"  >
+    <img  srcset="./wafx_res/Images/0-310-botao 1.png 215w,./wafx_res/Images/0-310-botao 1.png 233w,./wafx_res/Images/0-310-botao 1.png 310w" sizes="(min-width:1025px) 310px,(min-width:768px) 233px,(max-width:768px) 215px"  class="wafx-img-picture" src="wafx_res/Images/0-215-botao%201.png" alt="">
+    <img  srcset="./wafx_res/Images/0-215-botao 2.png 215w,./wafx_res/Images/0-233-botao%202.png 233w,./wafx_res/Images/0-310-botao%202.png 310w" sizes="(min-width:1025px) 310px,(min-width:768px) 233px,(max-width:768px) 215px"  class="wafx-img-picture-over" src="wafx_res/Images/0-215-botao%202.png" alt=""></a></div></div>
+<div class="compVis_36"><div  style='overflow:hidden;' class='comp_36'><div class='wafx-smt-txt-wrap smt-para-wa-37'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-37-block-0">Contáctanos vía WhatsApp para programar tus traslados. Estamos listos para servirle y asegurarnos de que su próximo viaje sea excepcional.</p>
+</div>
+</div></div>
+<div class="compVis_37"><div  class='comp_37'>
+<div class="wafx-carousel blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls" id="wafx-carouselunid38" >
+<div class="slides"></div>
+<h3 class="title  wafx-slideshow-text-wrap">&nbsp;</h3>
+<a class="prev">‹</a>
+<a class="next">›</a>
+<a class="play-pause"></a>
+</div>
+<script>
+document.wafxCarouselDatas['wafx-carouselunid38'] = 
+{
+    "items": [
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[0]}",
+                "320": "${galleryRendered[0]}",
+                "768": "${galleryRendered[0]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[4]}",
+                "320": "${galleryRendered[4]}",
+                "768": "${galleryRendered[4]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[7]}",
+                "320": "${galleryRendered[7]}",
+                "768": "${galleryRendered[7]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[8]}",
+                "320": "${galleryRendered[8]}",
+                "768": "${galleryRendered[8]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[9]}",
+                "320": "${galleryRendered[9]}",
+                "768": "${galleryRendered[9]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[10]}",
+                "320": "${galleryRendered[10]}",
+                "768": "${galleryRendered[10]}"
+            }
+        },
+        {
+            "html_v2_list": [
+            ],
+            "src": {
+                "1024": "${galleryRendered[11]}",
+                "320": "${galleryRendered[11]}",
+                "768": "${galleryRendered[11]}"
+            }
+        }
+    ],
+    "slideshowInterval": 4000,
+    "startSlideshow": true,
+    "stretchImages": "contain",
+    "template_settings": {
+        "col_bg": "rgba(0,0,0,0.701961)",
+        "position": 2,
+        "slideshow_version": 2,
+        "unid_comp": 38
+    }
+}
+</script>
+</div></div>
+<a id="contato" class='comp_38'></a>
+<div class="compVis_39"><div  class='comp_39 wafxCompFluid'  ><div class="wafx-vis-320 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:520px;height:156px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="1400" data-original-height="788" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-1705-verde.jpg);'></div>
+</div>
+<div class="wafx-vis-768 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:968px;height:128px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="1400" data-original-height="788" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-4093-verde.jpg);'></div>
+</div>
+<div class="wafx-vis-1024 wafxParallaxV2-wrap" style='overflow:hidden;pointer-events:none;width:1224px;height:137px;left:-100px;'>
+<div class="wafxParallaxV2-bg" data-parallax-version="1" data-speed-y="0.1" data-inerty-y="0" data-original-width="1400" data-original-height="788" data-image-scale="1"  style='position:absolute;background-image:url(wafx_res/Images/0-5457-verde.jpg);'></div>
+</div>
+</div></div>
+<div class="compVis_40"><div  style='overflow:hidden;' class='comp_40'><div class='wafx-smt-txt-wrap smt-para-wa-41'>
+<p  class=" smt-wa-last-block wafx-smt-inner smt-wa-default smt-wa-41-block-0"><font color='#ffffff'>© 2024 &#34;Laurel Traslados&#34;. Todos los derechos reservados.<br /><br />Este contenido, incluidos, entre otros, texto, logotipos, imágenes y cualquier material relacionado, está protegido por derechos de autor y otras leyes de propiedad intelectual. La reproducción, distribución o uso no autorizado de este material, total o parcial, está estrictamente prohibido y sujeto a acciones legales.<br /><br />&#34;Laurel Traslados&#34; es una marca registrada, y su uso no autorizado está sujeto a procedimientos legales y sanciones según lo establecido por las leyes aplicables.<br /><br /></font></p>
+</div>
+</div></div>
+
+
+
+
+						
+
+
+				</div>
+ 
+<div class="waBlockSocialBar float-sm">
+<a href="https://api.whatsapp.com/send?phone=54${whatsapp}&amp;text=Hola,%20me%20comunico%20contigo%20a%20trav%c3%a9s%20de%20tu%20pagina%20web.%20Me%20gustar%c3%ada%20tener%20m%c3%a1s%20informaci%c3%b3n%20sobre%20tus%20servicios."" target="_blank" class="fl-fl float-fb_0">
+<i class="waFa fab fa-whatsapp"></i>
+<span class="waText">Whatsapp</span>
+</a>
+</div>
+
+			</div>
+
+
+			
+
+<script src="wafx_res/standard/js/wafx-polyfill0da6.js?static_res_1c288804cdde21393d8eec577f56f5b9"></script>
+
+
+<script  src="wafx_res/standard/js/wafx-menu0da6.js?static_res_1c288804cdde21393d8eec577f56f5b9"></script>
+<script  src="wafx_res/standard/js/wafx-read-more0da6.js?static_res_1c288804cdde21393d8eec577f56f5b9"></script>
+
+<script src="wafx_res/libs/animate/wow.min31dc.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+
+
+<script  src="wafx_res/libs/animate/wafxripple31dc.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+
+
+
+
+
+
+
+
+
+<script src="wafx_res/libs/parallax_v2/wafx_parallax_v231dc.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+ 
+
+
+
+
+
+<script src="../kit.fontawesome.com/d475e0bd19.html" ></script>
+
+
+
+<script src="wafx_res/libs/lazyload/lazyload.min31dc.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+
+<script src="wafx_res/libs/blueimp/js/blueimp-helper31dc.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+<script src="wafx_res/libs/blueimp/js/blueimp-gallery31dc.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+<!--
+<script src="./wafx_res/libs/blueimp/js/blueimp-gallery-fullscreen.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+<script src="./wafx_res/libs/blueimp/js/blueimp-gallery-indicator.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+<script src="./wafx_res/libs/blueimp/js/blueimp-gallery-video.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+<script src="./wafx_res/libs/blueimp/js/blueimp-gallery-youtube.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+<script src="./wafx_res/libs/blueimp/js/blueimp-gallery-vimeo.js?static_res_5538b4607b305e8973287b2021bc665b"></script>
+-->
+
+
+
+
+<script  src="wafx_res/standard/js/wafx-form_v20da6.js?static_res_1c288804cdde21393d8eec577f56f5b9"></script>
+<script src="wafx_res/standard/multimedia/wafx-multimedia0da6.js?static_res_1c288804cdde21393d8eec577f56f5b9"></script>
+<script src="wafx_res/standard/js/wafx-frame-ext0da6.js?static_res_1c288804cdde21393d8eec577f56f5b9"></script>
+
+
+
+
+<script>
+
+
+
+
+
+    WaFxParallax.init();
+
+
+
+
+WaFxMFrameExt.init();
+WafxBlueImpGallery.init();
+WafxBlueImpCarousel.init();
+WafxPlyrAudio.init();
+WaFxWindow.screenChange = function()
+{
+    WaFxMFrameExt.changeScreen();
+    WafxBlueImpCarousel.reload();
+    WafxBlueImpGallery.reload();
+
+    
+    WafxReadMore.bind();
+};
+
+
+
+
+
+
+WafxFormV2.init({
+}
+);
+WafxFluidHelper.init();
+WafxRollOver.init();
+WafxRipple.init();
+
+var wow = new WOW(
+{
+boxClass:     'wafxWow',      
+animateClass: 'animated', 
+offset:       0,          // default
+mobile:       true,       // default
+live:         true,        // default
+});
+wow.init();
+
+
+
+</script>
+</body>
+</html>
+  `;
+
+  fs.writeFileSync(`./index.html`, htmlContent);
+};
+const fetchData = async () => {
+  try {
+    const response = await fetch(
+      `https://${studioId}.api.sanity.io/v2021-10-21/data/query/${studioDataset}?query=${query}`
+    );
+    const data = await response.json();
+    generateHtml(data.result);
+  } catch (error) {
+    console.error("Error fetching data from Sanity:", error);
+    return;
+  }
+};
+fetchData();
